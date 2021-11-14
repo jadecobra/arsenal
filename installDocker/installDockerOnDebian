@@ -1,0 +1,10 @@
+sudo apt update
+sudo apt install docker.io -y
+sudo apt update
+sudo groupadd docker
+sudo usermod -aG docker $USER
+exit
+newgrp docker
+docker run hello-world
+sudo systemctl disable docker.service
+sudo systemctl disable containerd.service
