@@ -2,6 +2,6 @@ brew update
 brew tap hashicorp/tap
 brew install hashicorp/tap/terraform
 brew upgrade hashicorp/tap/terraform
-terrafrom -help
+terraform -help
 terraform --version
 terraform -install-autocomplete
