@@ -6,5 +6,4 @@ hdiutil info
 docker --version
 docker run hello-world
 docker ps -a
-docker run -d -p 80:80 docker/getting-started
 # run hdiutil detach /dev/{diskName that matches Volume}
