@@ -1,2 +1,4 @@
 curl "https://nodejs.org/dist/v17.1.0/node-v17.1.0.pkg" -o "node.pkg"
 sudo installer -pkg node.pkg -target /
+node --version
+npm --version
