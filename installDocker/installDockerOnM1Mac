@@ -1,0 +1,10 @@
+softwareupdate --install-rosetta
+curl httpsmv ://desktop.docker.com/mac/main/arm64/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-mac-arm64 -o docker.dmg
+hdiutil attach docker.dmg
+cp /Volumes/Docker/Docker.app /Applications/Docker.app
+hdiutil info
+docker --version
+docker run hello-world
+docker ps -a
+docker run -d -p 80:80 docker/getting-started
+# run hdiutil detach /dev/{diskName that matches Volume}
