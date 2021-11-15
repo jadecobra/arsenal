@@ -1,3 +1,0 @@
-sudo npm install --global cdktf-cli
-cdktf help
-cdktf --version
