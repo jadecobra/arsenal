@@ -1,2 +1,3 @@
 sudo apt update
-sudo apt install git tree pbcopy
+sudo apt install git tree xclip xsel
+alias pbcopy='xclip -selection clipboard'
