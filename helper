@@ -32,6 +32,12 @@ error_exit() {
 }
 
 create_and_go_to() {
-    $projectName=$1
-    mkdir -p $projectName && cd $projectName
+    projectName=$1
+    print "projectName: $projectName"
+    mkdir $projectName && cd $projectName
+}
+
+remove_helper() {
+    helperPath=/usr/local/bin/helper
+    sudo rm $helperPath
 }
