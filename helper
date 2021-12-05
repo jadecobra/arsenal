@@ -32,5 +32,6 @@ error_exit() {
 }
 
 create_and_go_to() {
-    mkdir -p $1 && cd $1
+    $projectName=$1
+    mkdir -p $projectName && cd $projectName
 }
