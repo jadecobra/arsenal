@@ -74,8 +74,8 @@ run_tests() {
     sniffer
 }
 
-clear
 get_helper_file
+clear
 project_name=$1
 header 'Creating a Python Test Driven Development Project with Shell'
 get_project_name
