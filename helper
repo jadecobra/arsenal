@@ -37,9 +37,10 @@ create_and_go_to() {
     mkdir $projectName && cd $projectName
 }
 
-remove_helper() {
+remove_helpers() {
     helperPath=/usr/local/bin/helper
-    sudo rm $helperPath
+    setupTDDPath=/usr/local/bin/createPythonTestDrivenDevelopmentProjectNamed
+    sudo rm $helperPath $setupTDDPath
 }
 
 setup_aliases(){
