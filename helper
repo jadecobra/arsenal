@@ -30,3 +30,7 @@ error_exit() {
     print "${PROGNAME}: ${1:-"Unknown Error"}" 1>&2
     exit 1
 }
+
+create_and_go_to() {
+    mkdir -p $1 && cd $1
+}
