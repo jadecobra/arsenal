@@ -26,6 +26,7 @@ print () {
 }
 
 error_exit() {
-    print "$1" 1>&2
+    PROGNAME="$(basename $0)"
+    print "${PROGNAME}: ${1:-"Unknown Error"}" 1>&2
     exit 1
 }
