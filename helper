@@ -41,3 +41,12 @@ remove_helper() {
     helperPath=/usr/local/bin/helper
     sudo rm $helperPath
 }
+
+setup_aliases(){
+    alias commit="git commit -am"
+    alias push="git push"
+    alias pull="git pull"
+    alias status="git status"
+}
+
+setup_aliases
