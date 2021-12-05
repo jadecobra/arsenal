@@ -1,0 +1,87 @@
+# Create a Python Test Driven Development Environment on Mac OS X
+#   default project name is testDrivenDevelopmentEnvironment
+
+get_helper_file() {
+    local helperPath=/usr/local/bin/helper
+    cat $helperPath || sudo curl https://raw.githubusercontent.com/jadecobra/arsenal/main/helper -o /usr/local/bin/helper
+    source $helperPath
+}
+
+get_project_name () {
+    read -p "What is the name of the Project: " project_name
+    [[ -z $project_name ]] && project_name="a_test_driven_development_project" || echo
+    echo "\tprojectName: $project_name"
+    pause
+}
+
+create_directory_structure() {
+    header "Create directory structure: $project_name/tests..."
+    mkdir -p $project_name/tests
+    cd $project_name
+    display_directory
+}
+
+create_boiler_plate_code() {
+    header "Create boiler plate code..."
+    touch $project_name.py
+    touch tests/__init__.py
+    display_directory
+}
+
+create_failing_test() {
+    header 'Create a failing python test...'
+    cat << DELIMITER > tests/test_$project_name.py
+from unittest import TestCase
+
+class Test$project_name(TestCase):
+
+    def test_failure(self):
+        self.assertTrue(False)
+DELIMITER
+    cat tests/test_$project_name.py
+    display_directory
+    pause
+}
+
+setup_virtual_environment () {
+    header "Setup virtual environment..."
+    python3 -m venv .venv
+    display_directory
+    source .venv/bin/activate
+    pip install -U pip
+    pip install sniffer macFSevents
+}
+
+create_scent_file() {
+    header "Create scent file..."
+    cat << DELIMITER > scent.py
+from sniffer.api import *
+from subprocess import run
+
+@runnable
+def execute_nose(*args):
+    if run('python -m unittest -f', shell=True).returncode == 0:
+        return True
+
+DELIMITER
+    cat scent.py
+    display_directory
+}
+
+run_tests() {
+    header 'Run tests...'
+    code .
+    code tests/test_$project_name.py # you can change "code"" to match your editor
+    sniffer
+}
+
+clear
+get_helper_file
+header 'Creating a Python Test Driven Development Project with Shell'
+get_project_name
+create_directory_structure
+create_boiler_plate_code
+create_failing_test
+setup_virtual_environment
+create_scent_file
+run_tests
