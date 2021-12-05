@@ -2,14 +2,15 @@
 #   default project name is testDrivenDevelopmentEnvironment
 
 get_helper_file() {
-    local helperPath=/usr/local/bin/helper
-    cat $helperPath || sudo curl https://raw.githubusercontent.com/jadecobra/arsenal/main/helper -o /usr/local/bin/helper
-    source $helperPath
+    local helper_path=/usr/local/bin/helper
+    cat $helper_path || sudo curl https://raw.githubusercontent.com/jadecobra/arsenal/main/helper -o /usr/local/bin/helper
+    source $helper_path
 }
 
 get_project_name () {
+    project_name=$1
     read -p "What is the name of the Project: " project_name
-    [[ -z $project_name ]] && project_name="a_test_driven_development_project" || echo
+    [[ -z $project_name ]] && read -p "What is the name of the Project: " project_name && project_name="a_test_driven_development_project" || echo
     echo "\tprojectName: $project_name"
     pause
 }
