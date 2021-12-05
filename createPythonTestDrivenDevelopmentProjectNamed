@@ -8,8 +8,6 @@ get_helper_file() {
 }
 
 get_project_name () {
-    project_name=$1
-    echo "\tprojectName: $project_name"
     [[ -z $project_name ]] && read -p "What is the name of the Project: " project_name && project_name="a_test_driven_development_project" || echo
     echo "\tprojectName: $project_name"
     pause
@@ -78,6 +76,7 @@ run_tests() {
 
 clear
 get_helper_file
+project_name=$1
 header 'Creating a Python Test Driven Development Project with Shell'
 get_project_name
 create_directory_structure
