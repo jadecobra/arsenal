@@ -48,6 +48,7 @@ setup_aliases(){
     alias push="git push"
     alias pull="git pull"
     alias status="git status"
+    alias add="git add"
 }
 
 setup_aliases
