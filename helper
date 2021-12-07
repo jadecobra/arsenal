@@ -43,12 +43,20 @@ remove_helpers() {
     sudo rm $helperPath $setupTDDPath
 }
 
-setup_aliases(){
+setup_aliases() {
     alias commit="git commit -am"
     alias push="git push"
     alias pull="git pull"
     alias status="git status"
     alias add="git add"
+}
+
+activateVirtualEnvironment() {
+    source .venv/bin/activate
+}
+
+venv() {
+    activateVirtualEnvironment || python3 -m venv .venv && activateVirtualEnvironment
 }
 
 setup_aliases
