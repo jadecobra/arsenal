@@ -1,0 +1,4 @@
+initPlan() {
+    terraform init
+    terraform plan
+}
