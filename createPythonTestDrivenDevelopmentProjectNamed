@@ -41,14 +41,23 @@ DELIMITER
     display_directory
     pause
 }
+createRequirements() {
+    cat << DELIMITER > requirements.txt
+sniffer
+macFSevents
+DELIMITER
+}
 
 setup_virtual_environment () {
     header "Setup virtual environment..."
+    python3 -m pip install pip-accel
     python3 -m venv .venv
+    python3 -m pip install -U pip
     display_directory
     source .venv/bin/activate
-    pip install -U pip
-    pip install sniffer macFSevents
+    createRequirements
+    python3 -m pip-accel install -r requirements.txt
+
 }
 
 create_scent_file() {
