@@ -1,0 +1,5 @@
+mkdir -p ~/.pip/download-cache
+cat << EOF > ~/.pip/pip.conf
+[global]
+download-cache = ~/.pip/download-cache
+EOF
