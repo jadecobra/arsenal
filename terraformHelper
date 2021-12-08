@@ -1,4 +1,22 @@
-initPlan() {
-    terraform init
-    terraform plan
+get_helper_file() {
+    local helper_path=/usr/local/bin/helper
+    cat $helper_path || sudo curl https://raw.githubusercontent.com/jadecobra/arsenal/main/helper -o /usr/local/bin/helper
+    source $helper_path
 }
+
+setup_aliases() {
+    alias commit="git commit -am"
+    alias push="git push"
+    alias pull="git pull"
+    alias status="git status"
+    alias add="git add"
+    alias tf="~/bin/terraform"
+}
+
+initPlan() {
+    tf init || terraform init
+    tf plan || terraform plan
+}
+
+get_helper_file
+setup_aliases
