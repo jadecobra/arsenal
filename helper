@@ -55,6 +55,10 @@ activateVirtualEnvironment() {
     source .venv/bin/activate
 }
 
+sso() {
+    aws sso login $1
+}
+
 venv() {
     python3 -m pip install -U pip
     activateVirtualEnvironment || python3 -m venv .venv && activateVirtualEnvironment
