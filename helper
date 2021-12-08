@@ -45,6 +45,7 @@ remove_helpers() {
 
 setup_aliases() {
     alias commit="git commit -am"
+    alias pushPull="git push && git pull"
     alias push="git push"
     alias pull="git pull"
     alias status="git status"
