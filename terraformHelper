@@ -4,11 +4,16 @@ get_helper_file() {
     source $helper_path
 }
 
+setup_terraform_aliases() {
+    alias tf="~/bin/terraform"
+    alias plan="tf plan"
+}
+
 initPlan() {
+    setup_terraform_aliases
     tf version || terraform version
     tf init || terraform init
     tf plan || terraform plan
 }
 
 get_helper_file
-alias tf="~/bin/terraform"
