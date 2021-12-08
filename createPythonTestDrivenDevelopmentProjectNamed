@@ -52,10 +52,10 @@ setup_virtual_environment () {
     header "Setup virtual environment..."
     python3 -m pip install pip-accel
     python3 -m venv .venv
-    python3 -m pip install -U pip
+    createRequirements
     display_directory
     source .venv/bin/activate
-    createRequirements
+    python3 -m pip install -U pip
     python3 -m pip-accel install -r requirements.txt
 
 }
