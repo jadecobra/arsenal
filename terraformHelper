@@ -4,19 +4,11 @@ get_helper_file() {
     source $helper_path
 }
 
-setup_aliases() {
-    alias commit="git commit -am"
-    alias push="git push"
-    alias pull="git pull"
-    alias status="git status"
-    alias add="git add"
-    alias tf="~/bin/terraform"
-}
-
 initPlan() {
+    tf version || terraform version
     tf init || terraform init
     tf plan || terraform plan
 }
 
 get_helper_file
-setup_aliases
+alias tf="~/bin/terraform"
