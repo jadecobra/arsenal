@@ -17,3 +17,4 @@ initPlan() {
 }
 
 get_helper_file
+setup_terraform_aliases
