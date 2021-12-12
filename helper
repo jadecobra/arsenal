@@ -52,7 +52,7 @@ setup_aliases() {
     alias add="git add"
 }
 
-activateVirtualEnvironment() {
+activate_virtual_environment() {
     source .venv/bin/activate
 }
 
@@ -60,9 +60,13 @@ sso() {
     aws sso login $1
 }
 
-venv() {
+upgrade_pip() {
     python3 -m pip install -U pip
-    activateVirtualEnvironment || python3 -m venv .venv && activateVirtualEnvironment
+}
+
+venv() {
+    upgrade_pip
+    activate_virtual_environment || python3 -m venv .venv && activate_virtual_environment
 }
 
 setup_aliases
