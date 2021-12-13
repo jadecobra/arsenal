@@ -2,6 +2,7 @@ brew update
 brew upgrade
 brew install warrensbox/tap/tfswitch
 tfswitch
+export PATH=$PATH:$HOME/bin
 terraform -help
 terraform --version
 terraform -install-autocomplete
