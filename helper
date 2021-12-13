@@ -71,9 +71,10 @@ venv() {
 }
 
 write_data_to_file() {
-    echo "Writing data to $1"
-    $2 > $1
+    echo "Writing data to $1..."
+    cat << EOF > $1
+$2
+EOF
     cat $1
 }
-
 setup_aliases
