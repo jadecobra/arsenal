@@ -69,12 +69,10 @@ venv() {
     activate_virtual_environment || python3 -m venv .venv && activate_virtual_environment
 }
 
-write_data_to_file() {
+write_data_to_file() {{
     echo "Writing data to $1"
-    cat << EOF > $1
-$2
-EOF
-cat $1
+    $2 > $1
+    cat $1
 }
 
 setup_aliases
