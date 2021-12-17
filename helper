@@ -32,10 +32,10 @@ error_exit() {
 }
 
 create_and_go_to() {
-    projectName=$1
-    print "projectName: $projectName"
-    mkdir $projectName
-    cd $projectName
+    local directory_name=$1
+    print "directory_name: $directory_name"
+    mkdir $directory_name
+    cd $directory_name
 }
 
 remove_helpers() {
