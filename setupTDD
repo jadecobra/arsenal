@@ -1,0 +1,39 @@
+project_name=$1
+header "Create directory structure: $project_name/tests..."
+mkdir -p $project_name/tests
+cd $project_name
+touch $project_name.py
+touch tests/__init__.py
+test_file=tests/test_$project_name.py
+
+cat << DELIMITER > $test_file
+from unittest import TestCase
+
+class Test$project_name(TestCase):
+
+    def test_failure(self):
+        self.assertTrue(False)
+DELIMITER
+
+cat << DELIMITER > requirements.txt
+sniffer
+macFSevents
+DELIMITER
+
+cat << DELIMITER > scent.py
+from sniffer.api import *
+from subprocess import run
+
+@runnable
+def execute_nose(*args):
+    if run('python3 -m unittest -f', shell=True).returncode == 0:
+        return True
+
+DELIMITER
+
+python3 -m pip install -U pip
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install -r requirements.txt
+code $test_file || code-insiders $test_file
+sniffer
