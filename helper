@@ -58,7 +58,7 @@ activate_virtual_environment() {
 }
 
 sso() {
-    aws sso login $1
+    aws sso login --profile $1 || aws sso login
 }
 
 upgrade_pip() {

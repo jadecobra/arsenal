@@ -4,17 +4,21 @@ get_helper_file() {
     source $helper_path
 }
 
-setup_terraform_aliases() {
-    alias tf="~/bin/terraform"
-    alias plan="tf plan"
+tf () {
+    ~/bin/terraform "$@"
 }
 
 initPlan() {
-    setup_terraform_aliases
-    tf version || terraform version
-    tf init || terraform init
-    tf plan || terraform plan
+    tf version
+    tf init
+    tf plan
+}
+
+plan() {
+    tf fmt -recursive
+    tf validate
+    tf plan
 }
 
 get_helper_file
-setup_terraform_aliases
+tfswitch
