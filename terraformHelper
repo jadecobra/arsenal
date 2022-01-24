@@ -1,10 +1,11 @@
 get_helper_file() {
     local helper_path=/usr/local/bin/helper
-    cat $helper_path || sudo curl https://raw.githubusercontent.com/jadecobra/arsenal/main/helper -o /usr/local/bin/helper
+    cat $helper_path || sudo curl https://raw.githubusercontent.com/jadecobra/arsenal/main/helper -o $helper_path
     source $helper_path
 }
 
 tf () {
+    ~/bin/terraform -fmt -recursive
     ~/bin/terraform "$@"
 }
 
@@ -15,8 +16,6 @@ initPlan() {
 }
 
 plan() {
-    tf fmt -recursive
-    tf validate
     tf plan
 }
 
