@@ -51,6 +51,7 @@ setup_aliases() {
     alias pull="git pull"
     alias status="git status"
     alias add="git add"
+    alias checkout="git checkout"
 }
 
 activate_virtual_environment() {
