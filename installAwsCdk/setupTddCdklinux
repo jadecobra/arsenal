@@ -1,0 +1,15 @@
+sudo npm install -g aws-cdk
+project_name=$1
+
+mkdir $project_name
+cd $project_name
+cdk init --language python
+
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+pip install sniffer pyinotify
+cdk synth
+
+deactivate
+cd ..
