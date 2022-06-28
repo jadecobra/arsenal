@@ -5,6 +5,7 @@ get_helper_file() {
 }
 
 tf () {
+    ~/bin/terraform fmt -recursive
     ~/bin/terraform "$@"
 }
 
