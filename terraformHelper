@@ -21,5 +21,9 @@ plan() {
     tf plan
 }
 
+terraform () {
+    tf "$@"
+}
+
 get_helper_file
 tfswitch
