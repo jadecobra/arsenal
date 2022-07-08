@@ -54,7 +54,7 @@ setup_aliases() {
     alias checkout="git checkout"
     alias merge="git merge"
     alias pullMain="git checkout main && git pull"
-    alias mergeMain="git merge main"
+    alias mergeMain="git fetch --all && git merge origin/main"
 }
 
 activate_virtual_environment() {
