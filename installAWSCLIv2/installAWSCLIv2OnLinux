@@ -4,6 +4,6 @@ sudo apt update
 sudo apt install unzip -y
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "$filename"
 unzip $filename
-sudo ./aws/install
+sudo ./aws/install --update
 aws --version
 rm $filename
