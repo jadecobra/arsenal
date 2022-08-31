@@ -57,6 +57,15 @@ setup_aliases() {
     alias mergeMain="git fetch --all && git merge origin/main"
 }
 
+upgrade_pip() {
+    python3 -m pip install -U pip
+}
+
+requirements() {
+    upgrade_pip
+    pip3 install -r requirements.txt --upgrade
+}
+
 activate_virtual_environment() {
     source .venv/bin/activate
 }
@@ -65,14 +74,12 @@ sso() {
     aws sso login --profile $1 || aws sso login
 }
 
-upgrade_pip() {
-    python3 -m pip install -U pip
-}
 
 venv() {
     activate_virtual_environment || python3 -m venv .venv && activate_virtual_environment
-    upgrade_pip
+    requirements
 }
+
 
 write_data_to_file() {
     echo "Writing data to $1..."
