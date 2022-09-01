@@ -80,6 +80,17 @@ venv() {
     requirements
 }
 
+update_aws_cli() {
+    aws_cli="AWSCLIV2.pkg"
+    curl "https://awscli.amazonaws.com/$aws_cli" -o $aws_cli
+    sudo installer -pkg $aws_cli -target /
+    aws --version
+    rm rf $aws_cli
+}
+
+update() {
+    sudo npm install -g update npm aws-cdk
+}
 
 write_data_to_file() {
     echo "Writing data to $1..."
