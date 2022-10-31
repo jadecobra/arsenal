@@ -4,16 +4,9 @@ get_helper_file() {
     source $helper_path
 }
 
-tf () {
+tf() {
     ~/bin/terraform fmt -recursive
     ~/bin/terraform "$@"
-}
-
-initPlan() {
-    tf version
-    tf init
-    tf fmt -recursive
-    tf plan
 }
 
 plan() {
@@ -21,7 +14,13 @@ plan() {
     tf plan
 }
 
-terraform () {
+initPlan() {
+    tf version
+    tf init
+    plan
+}
+
+terraform() {
     tf "$@"
 }
 
