@@ -11,6 +11,7 @@ tf() {
 
 plan() {
     tf fmt -recursive
+    mergeMain
     tf plan
 }
 
