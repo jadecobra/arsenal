@@ -1,0 +1,26 @@
+email_address=$1
+filename="id_rsa_pfml"
+ls
+cd ~/.ssh
+ls
+# touch $filename $filename.pub
+ssh-keygen -f $filename -t rsa -C $email_address
+pbcopy < $filename.pub && echo "Public key copied to clipboard"
+
+cat << EOF >> ~/.ssh/config
+
+Host pfml
+    Hostname github.com
+    User git
+    IdentityFile ~/.ssh/$filename
+EOF
+
+# ssh -T git@pfml
+
+cat << EOF >> ~/.gitconfig
+
+[alias]
+    changeremotehost = !sh -c \"git remote -v | grep '$1.*fetch' | sed s/..fetch.// | sed s/$1/$2/ | xargs git remote set-url\"
+    setpfml = "config user.email '$email_address' && config user.name '$email_address'"
+    pfml = !sh -c \"git changeremotehost github.com pfml && git setpfml\"
+EOF
