@@ -100,3 +100,4 @@ EOF
     cat $1
 }
 setup_aliases
+pull
