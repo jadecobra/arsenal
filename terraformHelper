@@ -10,9 +10,9 @@ tf() {
 }
 
 plan() {
-    tf fmt -recursive
+    tf fmt -recursive ../../..
     mergeMain
-    tf plan
+    tf plan -lock=false
 }
 
 initPlan() {

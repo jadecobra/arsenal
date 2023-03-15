@@ -47,13 +47,13 @@ remove_helpers() {
 setup_aliases() {
     alias commit="git commit -am"
     alias pushPull="git push && git pull"
-    alias push="git push"
     alias pull="git pull"
+    alias push="git pull && git push"
     alias status="git status"
     alias add="git add"
     alias checkout="git checkout"
     alias merge="git merge"
-    alias pullMain="git checkout main && git pull"
+    alias main="git checkout main && git pull"
     alias mergeMain="git fetch --all && git merge origin/main"
 }
 
