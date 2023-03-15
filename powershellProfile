@@ -1,0 +1,65 @@
+Import-Module "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\Microsoft.VisualStudio.DevShell.dll"
+function credentials { code-insiders "$($Env:UserProfile)/.aws/credentials"; }
+function cdmRepository { return '\cdm\CloudDataManagement\'; }
+function ReleasesPath { return "$(cdmRepository)Releases\"; }
+function ACDM { return "$(ReleasesPath)ACDM 1.0\"; }
+function PolySystemsPath { return "$(cdmRepository)PolySystems\"; }
+function DocumentsPath { return "$Env:UserProfile\Documents\"; }
+function HowToPath { return "$(DocumentsPath)howto\"; }
+
+function configuratorPath { return "$(ACDM)Configurator"; }
+
+function Lab { $(Set-Location "$(DocumentsPath)CDM\polysystems\dev\experiments"); }
+function HowTo { Set-Location $(HowToPath); }
+function requirements { pip install -r requirements.txt -U; }
+function activateVenv { ./.venv/scripts/activate; }
+function venv {
+    try {
+        & { activateVenv; }
+    }
+    catch {
+        python -m venv .venv;
+    }
+    activateVenv;
+}
+
+function upgradePip { python -m pip install -U pip; }
+
+function updateAwsCli {
+    $aws_cli = "AWSCLIV2.msi"
+    curl "https://awscli.amazonaws.com/$aws_cli" -o $aws_cli
+    Start-Process msiexec -ArgumentList "/i $aws_cli /passive" -PassThru -Wait
+    Remove-Item $aws_cli
+}
+function update { upgradePip; npm i -g npm aws-cdk; updateAwsCli; }
+function cdkPatterns { Set-Location "$(HowToPath)cdk_patterns"; }
+function lambdaPowerTuner { Set-Location "$(HowToPath)cdk_patterns\typescript\lambdaPowerTuner"; }
+function HowToPython { Set-Location "$(HowToPath)python"; }
+function HowToTypeScript { Set-Location "$(HowToPath)typescript"; }
+function downloads { Set-Location "$Env:UserProfile\Downloads\"; }
+function patterns { Set-Location "$(HowToPath)typescript\cdk-patterns"; }
+function arsenal { Set-Location "$(cdmRepository)\python"; }
+function CDM { Set-Location "$(cdmRepository)Main\Dev\cdk_projects"; }
+function environments { Set-Location "$(cdmRepository)python\environments"; venv; }
+
+function sso { aws sso login; }
+function DEV { $Env:AWS_PROFILE = "DEV"; }
+function TST { $Env:AWS_PROFILE = "TST"; }
+function PRD { $Env:AWS_PROFILE = "PRD"; }
+function PolySystems { Set-Location "$(PolySystemsPath)"; venv; sso; }
+function configurator { Set-Location "$(configuratorPath)"; venv; }
+function auditor { Set-Location "$(cdmRepository)aws_auditor"; venv; }
+function checkin { tf vc checkin $args[0] }
+function checkout { tf vc checkout $args[0] }
+function DEVPolySystems { DEV; PolySystems; }
+function TSTPolySystems { TST; PolySystems; }
+function PRDPolySystems { PRD; PolySystems; }
+function PolySystemsLambdas {
+    Set-Location "$(PolySystemsPath)lambda_functions"
+    venv;
+    sso;
+}
+function DEVPolySystemsLambdas { DEV; PolySystemsLambdas; }
+function TSTPolySystemsLambdas { TST; PolySystemsLambdas; }
+function PRDPolySystemsLambdas { PRD; PolySystemsLambdas; }
+function test { sniffer; }
