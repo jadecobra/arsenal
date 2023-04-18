@@ -91,6 +91,7 @@ update_aws_cli() {
 }
 
 update() {
+    update_aws_cli
     sudo npm install -g update npm aws-cdk
 }
 
