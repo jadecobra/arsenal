@@ -1,7 +1,14 @@
 # Installs Debian/Ubuntu on Windows via WSL2
 
 function delimiter() { Write-Host "---------------------------------" }
-function installPackage([string]$distribution) {
+
+function setup_wsl() {
+    dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+    Enable-WindowsOptionalFeature -Online FeatureName Microsoft-Windows-Subsystem-Linux
+    Get-WindowsOptionalFeature -Online FeatureName Microsoft-Windows-Subsystem-Linux
+}
+
+function install_package([string]$distribution) {
     delimiter
     Write-Host "getting $distribution archive ..."
     delimiter
@@ -24,11 +31,8 @@ function installPackage([string]$distribution) {
 }
 
 cd ~/Downloads
-dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
-Enable-WindowsOptionalFeature -Online FeatureName Microsoft-Windows-Subsystem-Linux
-Get-WindowsOptionalFeature -Online FeatureName Microsoft-Windows-Subsystem-Linux
-
-installPackage debian
-# installPackage ubuntu
+setup_wsl
+install_package debian
+# install_package ubuntu
 
 debian
