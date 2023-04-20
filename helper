@@ -48,7 +48,7 @@ setup_aliases() {
     alias commit="git commit -am"
     alias pushPull="git push && git pull"
     alias pull="git fetch --all && git pull"
-    alias push="git fetch --all && git pull && git push"
+    alias push="git fetch --all && git push && git pull"
     alias status="git status"
     alias add="git add"
     alias checkout="git checkout"
