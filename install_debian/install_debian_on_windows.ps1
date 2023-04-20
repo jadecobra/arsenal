@@ -4,8 +4,8 @@ function delimiter() { Write-Host "---------------------------------" }
 
 function setup_wsl() {
     dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
-    Enable-WindowsOptionalFeature -Online FeatureName Microsoft-Windows-Subsystem-Linux
-    Get-WindowsOptionalFeature -Online FeatureName Microsoft-Windows-Subsystem-Linux
+    Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+    Get-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
 }
 
 function install_package([string]$distribution) {
