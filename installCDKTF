@@ -1,3 +1,7 @@
-sudo npm install --global cdktf-cli
+brew install pipenv cdktf
 cdktf help
 cdktf --version
+
+cdktf init --template=python
+pipenv install cdktf-cdktf-provider-aws
+pipenv shell
