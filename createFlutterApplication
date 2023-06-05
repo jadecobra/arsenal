@@ -1,0 +1,5 @@
+flutter create $1
+cd $1
+flutter analyze
+flutter test
+flutter run
