@@ -54,7 +54,7 @@ setup_aliases() {
     alias checkout="git checkout"
     alias merge="git merge"
     alias main="git checkout main && git fetch --all && git pull"
-    alias mergeMain="git fetch --all && git merge origin/main"
+    alias mergeMain="git fetch --all && git merge origin main"
     alias stash="git stash"
     alias fetch="git fetch --all"
 }
