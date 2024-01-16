@@ -44,6 +44,9 @@ remove_helpers() {
     sudo rm $helperPath $setupTDDPath
 }
 
+code() {
+    code-insiders ||
+}
 setup_aliases() {
     alias commit="git commit -am"
     alias pushPull="git push && git pull"
@@ -98,12 +101,29 @@ EOF
     cat $1
 }
 
+gym() {
+    cd ~/gym/gym
+}
+
+arsenal() {
+    cd ~/gym/arsenal
+}
+
+jadecobra() {
+    cd ~/gym/jadecobra
+}
+
+pump() {
+    code-insiders build/html/index.html
+}
+
 update() {
     update_aws_cli
     brew upgrade
     bun upgrade
 }
 
-update
 setup_aliases
+update
 pull
+echo 'DRY'
