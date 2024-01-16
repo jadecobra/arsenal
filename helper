@@ -1,3 +1,5 @@
+AWS_CLI="AWSCLIV2.pkg"
+
 delimiter() {
     echo "\n--------------------------------------------------------------------------------\n"
 }
@@ -83,11 +85,9 @@ venv() {
 }
 
 update_aws_cli() {
-    aws_cli="AWSCLIV2.pkg"
-    curl "https://awscli.amazonaws.com/$aws_cli" -o $aws_cli
-    sudo installer -pkg $aws_cli -target /
+    curl "https://awscli.amazonaws.com/$AWS_CLI" -o $AWS_CLI
+    sudo installer -pkg $AWS_CLI -target /
     aws --version
-    rm rf $aws_cli
 }
 
 write_data_to_file() {
@@ -119,4 +119,5 @@ update() {
 setup_aliases
 update
 pull
+rm rf $AWS_CLI
 echo 'DRY'
