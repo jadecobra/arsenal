@@ -45,7 +45,7 @@ remove_helpers() {
 }
 
 code() {
-    code-insiders ||
+    code $@ || code-insiders $@
 }
 setup_aliases() {
     alias commit="git commit -am"
@@ -60,6 +60,7 @@ setup_aliases() {
     alias mergeMain="git fetch --all && git merge origin/main"
     alias stash="git stash"
     alias fetch="git fetch --all"
+    alias pump="code build/html/index.html"
 }
 
 upgrade_pip() {
@@ -78,7 +79,6 @@ activate_virtual_environment() {
 sso() {
     aws sso login --profile $1 || aws sso login
 }
-
 
 venv() {
     activate_virtual_environment || python3 -m venv .venv && activate_virtual_environment
@@ -111,10 +111,6 @@ arsenal() {
 
 jadecobra() {
     cd ~/gym/jadecobra
-}
-
-pump() {
-    code-insiders build/html/index.html
 }
 
 update() {
