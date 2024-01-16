@@ -118,9 +118,9 @@ pump() {
 }
 
 update() {
-    update_aws_cli
     brew upgrade
     bun upgrade
+    update_aws_cli
 }
 
 setup_aliases
