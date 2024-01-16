@@ -44,9 +44,6 @@ remove_helpers() {
     sudo rm $helperPath $setupTDDPath
 }
 
-code() {
-    code $@ || code-insiders $@
-}
 setup_aliases() {
     alias commit="git commit -am"
     alias pushPull="git push && git pull"
