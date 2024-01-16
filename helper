@@ -59,7 +59,7 @@ setup_aliases() {
     alias mergeMain="git fetch --all && git merge origin/main"
     alias stash="git stash"
     alias fetch="git fetch --all"
-    alias pump="code build/html/index.html"
+    alias pump="open build/html/index.html"
 }
 
 upgrade_pip() {
